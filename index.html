@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#e63946">
+<meta name="description" content="Lexa Studios — Créateur Digital, Design, Tech & Gaming">
+<link rel="manifest" href="manifest.json">
+<title>Lexa Studios</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --a:#e63946;--a2:#457b9d;
+  --bg:#f8fafc;--s:#fff;--s2:#f1f5f9;--b:#e2e8f0;
+  --t:#0f172a;--m:#64748b;--d:#94a3b8;
+  --sh:0 1px 4px rgba(0,0,0,.06);--shm:0 8px 24px rgba(0,0,0,.1);
+  --r:12px;--font:'Inter',system-ui,sans-serif;
+  --nav-bg:rgba(255,255,255,.95);
+}
+[data-theme="dark"]{
+  --bg:#0f172a;--s:#1e293b;--s2:#0f172a;--b:#334155;
+  --t:#f1f5f9;--m:#94a3b8;--d:#475569;
+  --sh:0 1px 4px rgba(0,0,0,.3);--shm:0 8px 24px rgba(0,0,0,.4);
+  --nav-bg:rgba(30,41,59,.95);
+}
+[data-accent="blue"]{--a:#2563eb;--a2:#1d4ed8}
+[data-accent="green"]{--a:#16a34a;--a2:#15803d}
+[data-accent="purple"]{--a:#7c3aed;--a2:#6d28d9}
+[data-accent="orange"]{--a:#ea580c;--a2:#c2410c}
+[data-accent="pink"]{--a:#db2777;--a2:#be185d}
+[data-accent="cyan"]{--a:#0891b2;--a2:#0e7490}
+[data-accent="gold"]{--a:#d97706;--a2:#b45309}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:var(--font);overflow-x:hidden;transition:background .3s,color .3s}
+
+/* ══ NAV ══ */
+nav{position:sticky;top:0;z-index:500;background:var(--nav-bg);border-bottom:1px solid var(--b);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);height:64px;display:flex;align-items:center;padding:0 32px;gap:16px;transition:background .3s}
+.nav-logo{font-weight:900;font-size:20px;letter-spacing:-.5px;text-decoration:none;color:var(--t);flex-shrink:0;display:flex;align-items:center;gap:2px}
+.nav-logo .l1{color:var(--a)}.nav-logo .l2{color:var(--t)}
+.nav-links{display:flex;gap:2px;list-style:none;flex:1;overflow-x:auto;scrollbar-width:none}
+.nav-links::-webkit-scrollbar{display:none}
+.nav-links a{font-size:14px;font-weight:500;color:var(--m);text-decoration:none;padding:7px 12px;border-radius:8px;white-space:nowrap;transition:.2s}
+.nav-links a:hover{background:var(--s2);color:var(--t)}
+.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.nav-icon-btn{width:36px;height:36px;border-radius:50%;background:var(--s2);border:1px solid var(--b);display:flex;align-items:center;justify-content:center;font-size:16px;cursor:pointer;transition:.2s}
+.nav-icon-btn:hover{border-color:var(--a)}
+.nav-cta{background:var(--a);color:#fff;font-size:13px;font-weight:700;padding:9px 20px;border-radius:10px;text-decoration:none;transition:.2s;white-space:nowrap}
+.nav-cta:hover{filter:brightness(1.1)}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.ham span{width:22px;height:2px;background:var(--t);display:block;transition:.3s;border-radius:2px}
+
+/* MOBILE MENU */
+.mob-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--s);border-bottom:1px solid var(--b);z-index:499;padding:16px;flex-direction:column;gap:4px;box-shadow:0 8px 24px rgba(0,0,0,.1)}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:14px;font-weight:500;color:var(--m);text-decoration:none;padding:10px 14px;border-radius:8px;transition:.2s}
+.mob-menu a:hover{background:var(--s2);color:var(--t)}
+
+/* ══ HERO ══ */
+.hero{position:relative;overflow:hidden;background:var(--s);border-bottom:1px solid var(--b)}
+.hero-inner{max-width:1200px;margin:0 auto;padding:80px 32px 0;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.2);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--a);margin-bottom:20px}
+.hero-title{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-2px;line-height:1.05;color:var(--t);margin-bottom:16px}
+.hero-title span{color:var(--a)}
+.hero-desc{font-size:16px;color:var(--m);line-height:1.7;max-width:480px;margin-bottom:32px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--a);color:#fff;font-weight:700;font-size:14px;padding:13px 28px;border-radius:10px;border:none;cursor:pointer;transition:.2s;font-family:var(--font);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-secondary{background:var(--s);color:var(--t);font-weight:600;font-size:14px;padding:13px 28px;border-radius:10px;border:1.5px solid var(--b);cursor:pointer;transition:.2s;font-family:var(--font);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-secondary:hover{border-color:var(--a);color:var(--a)}
+.hero-stats{display:flex;gap:32px}
+.hstat{display:flex;flex-direction:column;gap:3px}
+.hstat-n{font-size:26px;font-weight:900;color:var(--t);letter-spacing:-1px}
+.hstat-l{font-size:12px;color:var(--m);font-weight:500}
+.hero-visual{position:relative;display:flex;align-items:flex-end;justify-content:center;padding-top:20px}
+.hero-card-float{background:var(--s);border:1px solid var(--b);border-radius:16px;padding:20px;box-shadow:var(--shm);width:280px;animation:float 4s ease infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hero-card-float2{position:absolute;right:-20px;bottom:40px;width:200px;background:var(--a);border-radius:14px;padding:16px;color:#fff;animation:float 4s ease .7s infinite}
+.hero-card-title{font-size:13px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.hero-card-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--b);font-size:12px}
+.hero-card-row:last-child{border-bottom:none}
+.hero-card-key{color:var(--m);font-weight:500}
+.hero-card-val{font-weight:700;color:var(--a)}
+.hc2-num{font-size:28px;font-weight:900;color:#fff}
+.hc2-label{font-size:11px;color:rgba(255,255,255,.8);margin-top:2px;font-weight:600}
+.hero-bg-dots{position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:.4}
+.hero-bg-dots::before{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--b) 1px,transparent 1px);background-size:24px 24px}
+
+/* ══ MARQUEE ══ */
+.marquee-wrap{background:var(--a);padding:12px 0;overflow:hidden}
+.marquee-track{display:flex;gap:0;animation:mq 20s linear infinite;white-space:nowrap}
+.mq-item{font-size:12px;font-weight:700;color:rgba(255,255,255,.9);padding:0 32px;flex-shrink:0;display:flex;align-items:center;gap:8px;letter-spacing:.3px;text-transform:uppercase}
+.mq-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ══ SECTION BASE ══ */
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.sh{display:flex;align-items:flex-end;justify-content:space-between;padding:56px 0 24px;gap:16px}
+.sh-left{display:flex;flex-direction:column;gap:6px}
+.sh-tag{font-size:12px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+.sh-tag::before{content:'';width:20px;height:2px;background:var(--a);border-radius:2px}
+.sh-title{font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:-1px}
+.sh-desc{font-size:14px;color:var(--m);max-width:480px;line-height:1.6}
+.sh-more{font-size:13px;font-weight:600;color:var(--a);text-decoration:none;display:flex;align-items:center;gap:4px;white-space:nowrap;padding-bottom:4px;transition:.2s}
+.sh-more:hover{gap:8px}
+
+/* ══ SERVICES GRID ══ */
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:64px}
+.srv-card{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:28px 24px;box-shadow:var(--sh);transition:.3s;text-decoration:none;display:block;position:relative;overflow:hidden}
+.srv-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--cc,var(--a));transform:scaleX(0);transition:.3s;transform-origin:left}
+.srv-card:hover{box-shadow:var(--shm);transform:translateY(-4px)}
+.srv-card:hover::after{transform:scaleX(1)}
+.srv-num{font-size:11px;font-weight:700;color:var(--d);text-transform:uppercase;letter-spacing:.5px;margin-bottom:16px}
+.srv-icon-wrap{width:52px;height:52px;border-radius:14px;background:var(--cc-bg,rgba(230,57,70,.08));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px;transition:.2s}
+.srv-card:hover .srv-icon-wrap{transform:scale(1.1)}
+.srv-name{font-size:17px;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+.srv-desc{font-size:13px;color:var(--m);line-height:1.65;margin-bottom:16px}
+.srv-tags{display:flex;gap:6px;flex-wrap:wrap}
+.srv-tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;background:var(--s2);color:var(--m)}
+.srv-arrow{position:absolute;top:24px;right:24px;font-size:18px;color:var(--d);transition:.3s}
+.srv-card:hover .srv-arrow{color:var(--a);transform:translateX(3px)}
+/* service colors */
+.c-blue{--cc:#2563eb;--cc-bg:rgba(37,99,235,.08)}.c-pink{--cc:#ec4899;--cc-bg:rgba(236,72,153,.08)}.c-green{--cc:#16a34a;--cc-bg:rgba(22,163,74,.08)}.c-amber{--cc:#d97706;--cc-bg:rgba(217,119,6,.08)}
+
+/* ══ ABOUT SECTION ══ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:0 0 64px}
+.about-img-wrap{position:relative}
+.about-card{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:32px;box-shadow:var(--shm);position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--a),var(--a2))}
+.about-avatar{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--a),var(--a2));display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:16px}
+.about-name{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:4px}
+.about-role{font-size:13px;color:var(--m);font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.about-role::before{content:'';width:16px;height:2px;background:var(--a);border-radius:2px}
+.about-stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px;padding-top:16px;border-top:1px solid var(--b)}
+.ast{background:var(--s2);border-radius:10px;padding:12px 14px}
+.ast-n{font-size:22px;font-weight:900;color:var(--a);letter-spacing:-.5px}
+.ast-l{font-size:11px;color:var(--m);font-weight:600;margin-top:1px}
+.about-float{position:absolute;bottom:-16px;right:-16px;background:var(--a);color:#fff;border-radius:14px;padding:14px 18px;box-shadow:0 8px 24px rgba(230,57,70,.3)}
+.about-float-n{font-size:22px;font-weight:900}
+.about-float-l{font-size:10px;font-weight:700;opacity:.85;margin-top:2px}
+.about-text h2{font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-.8px;margin-bottom:16px}
+.about-text h2 span{color:var(--a)}
+.about-text p{font-size:15px;color:var(--m);line-height:1.8;margin-bottom:16px}
+.about-skills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.skill{font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;background:var(--s2);border:1.5px solid var(--b);color:var(--m);transition:.2s}
+.skill:hover{border-color:var(--a);color:var(--a)}
+
+/* ══ PORTFOLIO ══ */
+.port-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-bottom:64px}
+.pi{position:relative;overflow:hidden;border-radius:var(--r);background:var(--s2);border:1px solid var(--b);cursor:pointer;box-shadow:var(--sh);transition:.3s}
+.pi:nth-child(1){grid-column:span 7;grid-row:span 2}
+.pi:nth-child(2){grid-column:span 5}
+.pi:nth-child(3){grid-column:span 5}
+.pi:nth-child(4){grid-column:span 4}
+.pi:nth-child(5){grid-column:span 4}
+.pi:nth-child(6){grid-column:span 4}
+.pi:hover{box-shadow:var(--shm);transform:scale(1.01)}
+.pi img{width:100%;height:100%;min-height:180px;object-fit:cover;display:block;transition:transform .5s,filter .3s}
+.pi:hover img{transform:scale(1.06)}
+.pi-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 60%);opacity:0;transition:.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.pi:hover .pi-overlay{opacity:1}
+.pi-cat{font-size:10px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.pi-name{font-size:16px;font-weight:800;color:#fff}
+
+/* ══ SOCIALS ══ */
+.soc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:64px}
+.soc{background:var(--s);border:1px solid var(--b);border-radius:var(--r);padding:28px 24px;display:flex;flex-direction:column;gap:12px;text-decoration:none;box-shadow:var(--sh);transition:.3s;position:relative;overflow:hidden}
+.soc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--sc,var(--a));transform:scaleX(0);transition:.4s;transform-origin:left}
+.soc:hover::before{transform:scaleX(1)}
+.soc:hover{box-shadow:var(--shm);transform:translateY(-4px)}
+.soc[data-c="red"]{--sc:#ff0000}.soc[data-c="green"]{--sc:#25d366}.soc[data-c="black"]{--sc:#000}
+.soc-icon{font-size:32px}
+.soc-name{font-size:16px;font-weight:800;color:var(--t)}
+.soc-handle{font-size:13px;color:var(--m);font-weight:500}
+.soc-arrow{font-size:18px;color:var(--d);margin-top:auto;transition:.3s}
+.soc:hover .soc-arrow{color:var(--sc,var(--a));transform:translateX(4px)}
+
+/* ══ TESTIMONIAL ══ */
+.testi{background:linear-gradient(135deg,var(--a),var(--a2));border-radius:20px;padding:48px;text-align:center;margin-bottom:64px;position:relative;overflow:hidden}
+.testi::before{content:'"';position:absolute;top:-20px;left:24px;font-size:200px;font-weight:900;color:rgba(255,255,255,.08);line-height:1;font-family:Georgia,serif}
+.testi-text{font-size:clamp(18px,3vw,24px);font-weight:700;color:#fff;line-height:1.6;margin-bottom:20px;position:relative}
+.testi-author{font-size:13px;color:rgba(255,255,255,.75);font-weight:600;position:relative}
+
+/* ══ CTA ══ */
+.cta{background:var(--s);border:1px solid var(--b);border-radius:20px;padding:56px 40px;text-align:center;margin-bottom:64px;box-shadow:var(--sh);position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(230,57,70,.08) 0%,transparent 70%);border-radius:50%}
+.cta-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.2);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;color:var(--a);margin-bottom:16px}
+.cta-title{font-size:clamp(24px,4vw,40px);font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.cta-title span{color:var(--a)}
+.cta-desc{font-size:15px;color:var(--m);margin-bottom:28px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.7}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+
+
+/* ══ PERSONALIZE ══ */
+.pz-btn{position:fixed;bottom:24px;right:24px;z-index:800;width:48px;height:48px;border-radius:50%;background:var(--a);color:#fff;font-size:20px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);transition:.3s;display:flex;align-items:center;justify-content:center}
+.pz-btn:hover{transform:scale(1.1) rotate(20deg)}
+.pz-panel{position:fixed;bottom:86px;right:24px;z-index:800;background:var(--s);border:1px solid var(--b);border-radius:16px;padding:20px;width:280px;box-shadow:0 12px 40px rgba(0,0,0,.15);display:none}
+.pz-panel.open{display:block;animation:sup .25s ease}
+@keyframes sup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pz-title{font-size:14px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.pz-s{margin-bottom:14px}
+.pz-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--m);margin-bottom:8px}
+.pz-row{display:flex;gap:8px}
+.pz-tb{flex:1;padding:8px 4px;border-radius:8px;border:1.5px solid var(--b);background:var(--s2);font-size:11px;font-weight:600;cursor:pointer;transition:.2s;font-family:var(--font);display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--m)}
+.pz-tb.active{border-color:var(--a);color:var(--a);background:rgba(230,57,70,.06)}
+.pz-colors{display:flex;gap:6px;flex-wrap:wrap}
+.pz-c{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:.2s;position:relative}
+.pz-c.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+.pz-c:hover{transform:scale(1.15)}
+.pz-reset{width:100%;padding:8px;border-radius:8px;background:var(--s2);border:1px solid var(--b);font-size:12px;font-weight:600;color:var(--m);cursor:pointer;margin-top:8px;font-family:var(--font);transition:.2s}
+.pz-reset:hover{color:var(--a);border-color:var(--a)}
+
+/* ══ PWA BANNER ══ */
+#pwa{display:none;position:fixed;top:80px;right:24px;z-index:900;background:var(--s);border:1px solid var(--a);border-radius:14px;padding:16px 18px;max-width:280px;box-shadow:0 8px 24px rgba(0,0,0,.12)}
+#pwa.show{display:block;animation:fadein .3s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.pwa-title{font-size:13px;font-weight:700;color:var(--t);margin-bottom:6px}
+.pwa-text{font-size:12px;color:var(--m);margin-bottom:12px;line-height:1.5}
+.pwa-btns{display:flex;gap:8px}
+.pwa-btn{font-size:12px;font-weight:700;padding:7px 14px;border-radius:8px;cursor:pointer;transition:.2s;font-family:var(--font)}
+.pwa-btn.install{background:var(--a);color:#fff;border:none}
+.pwa-btn.install:hover{filter:brightness(1.1)}
+.pwa-btn.dismiss{background:none;border:1px solid var(--b);color:var(--m)}
+.pwa-btn.dismiss:hover{border-color:var(--a);color:var(--a)}
+
+/* ══ FOOTER ══ */
+footer{background:var(--s);border-top:1px solid var(--b);padding:40px 32px;margin-bottom:0}
+.foot-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot-brand .logo{font-weight:900;font-size:20px;letter-spacing:-.5px;color:var(--t);margin-bottom:12px;display:block}
+.foot-brand .logo span{color:var(--a)}
+.foot-brand p{font-size:13px;color:var(--m);line-height:1.7;max-width:260px}
+.foot-col h4{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--t);margin-bottom:12px}
+.foot-col a{display:block;font-size:13px;color:var(--m);text-decoration:none;margin-bottom:8px;transition:.2s;font-weight:500}
+.foot-col a:hover{color:var(--a)}
+.foot-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--d);margin-top:24px}
+
+/* ══ BOTTOM NAV MOBILE ══ */
+.bnav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--s);border-top:1px solid var(--b);padding:8px 0;padding-bottom:env(safe-area-inset-bottom,8px)}
+.bnav-inner{display:flex;justify-content:space-around}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;padding:4px 10px}
+.bnav-icon{font-size:20px}
+.bnav-label{font-size:9px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.3px}
+.bnav-item.active .bnav-label{color:var(--a)}
+
+/* ══ REVEAL ══ */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.vis{opacity:1;transform:translateY(0)}
+
+/* ══ RESPONSIVE ══ */
+@media(min-width:768px){.ham{display:none}.bnav{display:none}}
+@media(max-width:767px){
+  nav{padding:0 16px;height:56px}.ham{display:flex}.nav-links{display:none}
+  .nav-cta{font-size:12px;padding:7px 14px}
+  .mob-menu{top:56px}
+  .hero-inner{grid-template-columns:1fr;gap:32px;padding:40px 20px 0}
+  .hero-visual{display:none}
+  .hero-stats{gap:20px}
+  .about-grid{grid-template-columns:1fr}.about-img-wrap{display:none}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .pi{grid-column:span 1!important;grid-row:span 1!important}
+  .soc-grid{grid-template-columns:1fr}
+  .testi{padding:32px 24px}
+  .cta{padding:36px 24px}
+  .wrap{padding:0 16px}
+  .foot-inner{grid-template-columns:1fr;gap:24px}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center}
+  footer{margin-bottom:70px}
+  .bnav{display:block}
+  .pz-btn{bottom:80px;right:16px}
+  .pz-panel{right:16px;bottom:142px;width:calc(100vw - 32px)}
+}
+@media(max-width:480px){.hero-btns{flex-direction:column}.btn-primary,.btn-secondary{justify-content:center;text-align:center}}
+</style>
+</head>
+<body>
+
+<!-- PWA BANNER -->
+<div id="pwa">
+  <p class="pwa-title">📲 Installer Lexa Studios</p>
+  <p class="pwa-text">Accède au site rapidement depuis ton écran d'accueil, même hors ligne.</p>
+  <div class="pwa-btns">
+    <button class="pwa-btn install" id="pwa-install">Installer</button>
+    <button class="pwa-btn dismiss" id="pwa-dismiss">Plus tard</button>
+  </div>
+</div>
+
+
+
+<!-- PERSONALIZE -->
+<button class="pz-btn" onclick="togglePz()">🎨</button>
+<div class="pz-panel" id="pz-panel">
+  <div class="pz-title">🎨 Personnaliser</div>
+  <div class="pz-s">
+    <div class="pz-l">Thème</div>
+    <div class="pz-row">
+      <button class="pz-tb active" id="pz-light" onclick="setTheme('light')">☀️<span>Clair</span></button>
+      <button class="pz-tb" id="pz-dark" onclick="setTheme('dark')">🌙<span>Sombre</span></button>
+      <button class="pz-tb" id="pz-auto" onclick="setTheme('auto')">🔄<span>Auto</span></button>
+    </div>
+  </div>
+  <div class="pz-s">
+    <div class="pz-l">Couleur principale</div>
+    <div class="pz-colors">
+      <div class="pz-c active" style="background:#e63946" onclick="setAccent('red')" data-a="red" title="Rouge"></div>
+      <div class="pz-c" style="background:#2563eb" onclick="setAccent('blue')" data-a="blue" title="Bleu"></div>
+      <div class="pz-c" style="background:#16a34a" onclick="setAccent('green')" data-a="green" title="Vert"></div>
+      <div class="pz-c" style="background:#7c3aed" onclick="setAccent('purple')" data-a="purple" title="Violet"></div>
+      <div class="pz-c" style="background:#ea580c" onclick="setAccent('orange')" data-a="orange" title="Orange"></div>
+      <div class="pz-c" style="background:#db2777" onclick="setAccent('pink')" data-a="pink" title="Rose"></div>
+      <div class="pz-c" style="background:#0891b2" onclick="setAccent('cyan')" data-a="cyan" title="Cyan"></div>
+      <div class="pz-c" style="background:#d97706" onclick="setAccent('gold')" data-a="gold" title="Or"></div>
+    </div>
+  </div>
+  <button class="pz-reset" onclick="resetPz()">↺ Réinitialiser</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><span class="l1">Lexa</span><span class="l2"> Studios</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="pages/jeux.html">🎮 Jeux</a></li>
+    <li><a href="pages/ia.html">🤖 IA Lexa</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-icon-btn" id="theme-toggle" onclick="setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark')">🌙</button>
+    <a href="https://whatsapp.com/channel/0029VbBXofmInlqMUSQ5e41r" target="_blank" class="nav-cta">Me contacter</a>
+  </div>
+  <button class="ham" onclick="toggleMob()" id="ham"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mob-menu">
+  <a href="#about" onclick="toggleMob()">À propos</a>
+  <a href="#services" onclick="toggleMob()">Services</a>
+  <a href="#portfolio" onclick="toggleMob()">Portfolio</a>
+  <a href="pages/jeux.html">🎮 Jeux</a>
+  <a href="pages/ia.html">🤖 IA Lexa</a>
+  <a href="pages/acces.html">🔐 Accès</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-dots"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">✦ Créateur Digital — Côte d'Ivoire</div>
+      <h1 class="hero-title">Design. Tech.<br><span>Créativité</span> sans limites.</h1>
+      <p class="hero-desc">Je construis des expériences digitales qui marient design raffiné, technologie de pointe et vision créative pour propulser votre projet.</p>
+      <div class="hero-btns">
+        <a href="pages/projet.html" class="btn-primary">🚀 Démarrer un projet</a>
+        <a href="#portfolio" class="btn-secondary">Voir le portfolio</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="hstat-n">50+</div><div class="hstat-l">Projets réalisés</div></div>
+        <div class="hstat"><div class="hstat-n">30+</div><div class="hstat-l">Clients satisfaits</div></div>
+        <div class="hstat"><div class="hstat-n">4+</div><div class="hstat-l">Ans d'expérience</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-float">
+        <div class="hero-card-title">💳 Profil Système</div>
+        <div class="hero-card-row"><span class="hero-card-key">Statut</span><span class="hero-card-val">● Disponible</span></div>
+        <div class="hero-card-row"><span class="hero-card-key">Spécialité</span><span class="hero-card-val">Full Stack</span></div>
+        <div class="hero-card-row"><span class="hero-card-key">Location</span><span class="hero-card-val">Côte d'Ivoire</span></div>
+        <div class="hero-card-row"><span class="hero-card-key">Note</span><span class="hero-card-val">★ 4.9/5</span></div>
+      </div>
+      <div class="hero-card-float2">
+        <div class="hc2-num">100%</div>
+        <div class="hc2-label">Satisfaction client</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mq-item">Informatique <span class="mq-dot"></span></span>
+    <span class="mq-item">Design & UI/UX <span class="mq-dot"></span></span>
+    <span class="mq-item">Streaming <span class="mq-dot"></span></span>
+    <span class="mq-item">Science & Tech <span class="mq-dot"></span></span>
+    <span class="mq-item">IA & Chatbots <span class="mq-dot"></span></span>
+    <span class="mq-item">Développement Web <span class="mq-dot"></span></span>
+    <span class="mq-item">Lexa Studios 2099 <span class="mq-dot"></span></span>
+    <span class="mq-item">Informatique <span class="mq-dot"></span></span>
+    <span class="mq-item">Design & UI/UX <span class="mq-dot"></span></span>
+    <span class="mq-item">Streaming <span class="mq-dot"></span></span>
+    <span class="mq-item">Science & Tech <span class="mq-dot"></span></span>
+    <span class="mq-item">IA & Chatbots <span class="mq-dot"></span></span>
+    <span class="mq-item">Développement Web <span class="mq-dot"></span></span>
+    <span class="mq-item">Lexa Studios 2099 <span class="mq-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="wrap">
+  <div class="sh rv">
+    <div class="sh-left">
+      <div class="sh-tag">Services</div>
+      <h2 class="sh-title">Expertises & Modules</h2>
+      <p class="sh-desc">4 domaines d'expertise couvrant tout le spectre du digital.</p>
+    </div>
+    <a href="#portfolio" class="sh-more">Voir le portfolio →</a>
+  </div>
+  <div class="srv-grid">
+    <a href="pages/informatique.html" class="srv-card c-blue rv">
+      <div class="srv-num">01</div>
+      <div class="srv-icon-wrap">💻</div>
+      <div class="srv-name">Informatique</div>
+      <p class="srv-desc">Développement software, architecture système, cybersécurité et astuces PC au quotidien.</p>
+      <div class="srv-tags"><span class="srv-tag">Dev</span><span class="srv-tag">Sécurité</span><span class="srv-tag">PC Tips</span></div>
+      <span class="srv-arrow">→</span>
+    </a>
+    <a href="pages/dessin.html" class="srv-card c-pink rv">
+      <div class="srv-num">02</div>
+      <div class="srv-icon-wrap">🎨</div>
+      <div class="srv-name">Dessin & Design</div>
+      <p class="srv-desc">Croquis de personnages, UI/UX design, illustrations numériques et identités visuelles.</p>
+      <div class="srv-tags"><span class="srv-tag">Croquis</span><span class="srv-tag">UI/UX</span><span class="srv-tag">Branding</span></div>
+      <span class="srv-arrow">→</span>
+    </a>
+    <a href="pages/streaming.html" class="srv-card c-green rv">
+      <div class="srv-num">03</div>
+      <div class="srv-icon-wrap">📡</div>
+      <div class="srv-name">Streaming</div>
+      <p class="srv-desc">Setups broadcast professionnels, OBS, gestion de flux et pipelines de diffusion.</p>
+      <div class="srv-tags"><span class="srv-tag">OBS</span><span class="srv-tag">Broadcast</span><span class="srv-tag">Live</span></div>
+      <span class="srv-arrow">→</span>
+    </a>
+    <a href="pages/science.html" class="srv-card c-amber rv">
+      <div class="srv-num">04</div>
+      <div class="srv-icon-wrap">🔬</div>
+      <div class="srv-name">Science & Tech</div>
+      <p class="srv-desc">Veille technologique, innovations et astuces pour rester à la pointe du futur.</p>
+      <div class="srv-tags"><span class="srv-tag">IA</span><span class="srv-tag">Innovation</span><span class="srv-tag">Veille</span></div>
+      <span class="srv-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" class="about-grid rv">
+    <div class="about-text">
+      <div class="sh-tag" style="margin-bottom:12px">À propos</div>
+      <h2>Passion pour <span>l'excellence</span> digitale</h2>
+      <p>Je suis un créateur digital polyvalent basé en Côte d'Ivoire, alliant maîtrise technique et sensibilité artistique pour produire des résultats qui dépassent les attentes.</p>
+      <p>Chaque projet est une mission — exécutée avec précision, créativité et une dédication totale à l'excellence.</p>
+      <div class="about-skills">
+        <span class="skill">HTML / CSS</span><span class="skill">JavaScript</span><span class="skill">UI/UX Design</span>
+        <span class="skill">OBS Studio</span><span class="skill">IA & Prompting</span><span class="skill">Illustration</span>
+      </div>
+      <div style="margin-top:24px">
+        <a href="pages/projet.html" class="btn-primary">🚀 Travailler avec moi</a>
+      </div>
+    </div>
+    <div class="about-img-wrap">
+      <div class="about-card">
+        <div class="about-avatar">⚡</div>
+        <div class="about-name">Lexa Studios</div>
+        <div class="about-role">Créateur Digital</div>
+        <p style="font-size:13px;color:var(--m);line-height:1.6">Studio créatif futuriste spécialisé en design digital, développement web, streaming et IA.</p>
+        <div class="about-stat-row">
+          <div class="ast"><div class="ast-n">4+</div><div class="ast-l">Années XP</div></div>
+          <div class="ast"><div class="ast-n">50+</div><div class="ast-l">Projets</div></div>
+          <div class="ast"><div class="ast-n">30+</div><div class="ast-l">Clients</div></div>
+          <div class="ast"><div class="ast-n">100%</div><div class="ast-l">Satisfaction</div></div>
+        </div>
+      </div>
+      <div class="about-float"><div class="about-float-n">∞</div><div class="about-float-l">Vision créative</div></div>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO -->
+  <div id="portfolio">
+    <div class="sh rv">
+      <div class="sh-left">
+        <div class="sh-tag">Portfolio</div>
+        <h2 class="sh-title">Projets Récents</h2>
+      </div>
+    </div>
+  </div>
+  <div class="port-grid">
+    <div class="pi rv"><img src="https://4kwallpapers.com/images/walls/thumbs_2t/20822.png" alt="Interface Orbital" loading="lazy"><div class="pi-overlay"><div class="pi-cat">Design Système</div><div class="pi-name">Interface Orbital</div></div></div>
+    <div class="pi rv"><img src="https://4kwallpapers.com/images/walls/thumbs_2t/22582.png" alt="Plateforme Nova" loading="lazy"><div class="pi-overlay"><div class="pi-cat">Web Dev</div><div class="pi-name">Plateforme Nova</div></div></div>
+    <div class="pi rv"><img src="https://4kwallpapers.com/images/walls/thumbs_2t/17605.png" alt="Studio Nexus" loading="lazy"><div class="pi-overlay"><div class="pi-cat">Streaming</div><div class="pi-name">Studio Nexus</div></div></div>
+    <div class="pi rv"><img src="https://4kwallpapers.com/images/walls/thumbs_2t/25015.jpg" alt="App Lumière" loading="lazy"><div class="pi-overlay"><div class="pi-cat">UI/UX</div><div class="pi-name">App Lumière</div></div></div>
+    <div class="pi rv"><img src="https://4kwallpapers.com/images/walls/thumbs_2t/20822.png" alt="Système Aether" loading="lazy"><div class="pi-overlay"><div class="pi-cat">Architecture</div><div class="pi-name">Système Aether</div></div></div>
+    <div class="pi rv"><img src="https://4kwallpapers.com/images/walls/thumbs_2t/22582.png" alt="ID Solaire" loading="lazy"><div class="pi-overlay"><div class="pi-cat">Branding</div><div class="pi-name">Identité Solaire</div></div></div>
+  </div>
+
+  <!-- TESTIMONIAL -->
+  <div class="testi rv">
+    <p class="testi-text">Une collaboration exceptionnelle — Lexa Studios a transcendé notre vision initiale pour livrer quelque chose de véritablement remarquable.</p>
+    <p class="testi-author">— Client Anonyme · Directeur Créatif</p>
+  </div>
+
+  <!-- SOCIALS -->
+  <div id="contact">
+    <div class="sh rv">
+      <div class="sh-left">
+        <div class="sh-tag">Réseaux</div>
+        <h2 class="sh-title">Suivre Lexa Studios</h2>
+      </div>
+    </div>
+  </div>
+  <div class="soc-grid">
+    <a href="https://www.youtube.com/@LexaSyve" target="_blank" class="soc rv" data-c="red">
+      <span class="soc-icon">▶️</span>
+      <div class="soc-name">YouTube</div>
+      <div class="soc-handle">@LexaSyve</div>
+      <div class="soc-arrow">→</div>
+    </a>
+    <a href="https://whatsapp.com/channel/0029VbBXofmInlqMUSQ5e41r" target="_blank" class="soc rv" data-c="green">
+      <span class="soc-icon">💬</span>
+      <div class="soc-name">WhatsApp</div>
+      <div class="soc-handle">Canal Lexa Studios</div>
+      <div class="soc-arrow">→</div>
+    </a>
+    <a href="https://www.tiktok.com/@axelchou7?is_from_webapp=1&sender_device=pc" target="_blank" class="soc rv" data-c="black">
+      <span class="soc-icon">🎵</span>
+      <div class="soc-name">TikTok</div>
+      <div class="soc-handle">@axelchou7</div>
+      <div class="soc-arrow">→</div>
+    </a>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta rv">
+    <div class="cta-tag">🚀 Nouveau projet ?</div>
+    <h2 class="cta-title">Prêt à créer quelque chose <span>d'exceptionnel</span> ?</h2>
+    <p class="cta-desc">Chaque grande réalisation commence par une conversation. Dis-moi ton projet et construisons-le ensemble.</p>
+    <div class="cta-btns">
+      <a href="pages/projet.html" class="btn-primary">🚀 Démarrer un projet</a>
+      <a href="pages/ia.html" class="btn-secondary">🤖 Parler à LEXA AI</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <span class="logo"><span style="color:var(--a)">Lexa</span> Studios</span>
+      <p>Studio créatif digital basé en Côte d'Ivoire. Design, technologie et innovation pour des expériences qui marquent.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Pages</h4>
+      <a href="#about">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="pages/projet.html">Démarrer un projet</a>
+    </div>
+    <div class="foot-col">
+      <h4>Modules</h4>
+      <a href="pages/informatique.html">Informatique</a>
+      <a href="pages/dessin.html">Dessin & Design</a>
+      <a href="pages/streaming.html">Streaming</a>
+      <a href="pages/science.html">Science & Tech</a>
+    </div>
+    <div class="foot-col">
+      <h4>Liens</h4>
+      <a href="pages/jeux.html">🎮 Jeux</a>
+      <a href="pages/ia.html">🤖 IA Lexa</a>
+      <a href="https://www.youtube.com/@LexaSyve" target="_blank">YouTube</a>
+      <a href="https://whatsapp.com/channel/0029VbBXofmInlqMUSQ5e41r" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2099 Lexa Studios — Tous droits réservés</span>
+    <span>Côte d'Ivoire 🇨🇮</span>
+  </div>
+</footer>
+
+<!-- BOTTOM NAV -->
+<div class="bnav">
+  <div class="bnav-inner">
+    <a href="index.html" class="bnav-item active"><span class="bnav-icon">🏠</span><span class="bnav-label">Accueil</span></a>
+    <a href="pages/jeux.html" class="bnav-item"><span class="bnav-icon">🎮</span><span class="bnav-label">Jeux</span></a>
+    <a href="pages/ia.html" class="bnav-item"><span class="bnav-icon">🤖</span><span class="bnav-label">IA</span></a>
+    <a href="pages/projet.html" class="bnav-item"><span class="bnav-icon">🚀</span><span class="bnav-label">Projet</span></a>
+    <a href="https://whatsapp.com/channel/0029VbBXofmInlqMUSQ5e41r" target="_blank" class="bnav-item"><span class="bnav-icon">📡</span><span class="bnav-label">Contact</span></a>
+  </div>
+</div>
+
+<script>
+/* ═══ REVEAL ═══ */
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('vis')}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ═══ NAV SCROLL ═══ */
+window.addEventListener('scroll',()=>{
+  const n=document.querySelector('nav');
+  n.style.boxShadow=scrollY>10?'0 1px 16px rgba(0,0,0,.08)':'none';
+});
+
+/* ═══ MOBILE MENU ═══ */
+function toggleMob(){
+  const m=document.getElementById('mob-menu');m.classList.toggle('open');
+  const h=document.getElementById('ham').querySelectorAll('span');
+  const o=m.classList.contains('open');
+  h[0].style.transform=o?'rotate(45deg) translate(5px,5px)':'';
+  h[1].style.opacity=o?'0':'1';
+  h[2].style.transform=o?'rotate(-45deg) translate(5px,-5px)':'';
+}
+
+/* ═══ PERSONALIZATION ═══ */
+function togglePz(){document.getElementById('pz-panel').classList.toggle('open')}
+document.addEventListener('click',e=>{
+  const p=document.getElementById('pz-panel');
+  if(p.classList.contains('open')&&!p.contains(e.target)&&!document.querySelector('.pz-btn').contains(e.target))p.classList.remove('open');
+});
+function setTheme(t){
+  let actual=t;
+  if(t==='auto') actual=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  document.documentElement.setAttribute('data-theme',actual);
+  localStorage.setItem('lx_idx_theme',t);
+  document.getElementById('pz-light').classList.toggle('active',t==='light');
+  document.getElementById('pz-dark').classList.toggle('active',t==='dark');
+  document.getElementById('pz-auto').classList.toggle('active',t==='auto');
+  document.getElementById('theme-toggle').textContent=actual==='dark'?'☀️':'🌙';
+  document.querySelector('meta[name="theme-color"]').content=actual==='dark'?'#0f172a':'#f8fafc';
+}
+function setAccent(a){
+  document.documentElement.setAttribute('data-accent',a);
+  localStorage.setItem('lx_idx_accent',a);
+  document.querySelectorAll('.pz-c').forEach(c=>c.classList.toggle('active',c.dataset.a===a));
+}
+function resetPz(){setTheme('light');setAccent('red');localStorage.removeItem('lx_idx_theme');localStorage.removeItem('lx_idx_accent')}
+/* Load prefs */
+const st=localStorage.getItem('lx_idx_theme')||'light';
+const sa=localStorage.getItem('lx_idx_accent')||'red';
+setTheme(st);setAccent(sa);
+
+/* ═══ ACCESS CHECK — PERSISTANT ═══ */
+(function(){
+  const gateEnabled = localStorage.getItem('lx_s_access_gate') !== 'false';
+  const hasAccess   = localStorage.getItem('lx_access') === 'granted';
+  const isAdmin     = localStorage.getItem('lx_admin')  === '1';
+  if(gateEnabled && !hasAccess && !isAdmin){
+    window.location.replace('acces.html');
+  }
+  const name = localStorage.getItem('lx_visitor_name');
+  if(name){
+    const tag = document.querySelector('.hero-tag');
+    if(tag) setTimeout(()=>{ tag.textContent = '👋 Bienvenue ' + name + ' !'; }, 400);
+  }
+})();
+
+
+
+/* ═══ PWA ═══ */
+let dPr=null;
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dPr=e;document.getElementById('pwa').classList.add('show')});
+document.getElementById('pwa-install').addEventListener('click',async()=>{if(dPr){dPr.prompt();await dPr.userChoice;dPr=null;document.getElementById('pwa').classList.remove('show')}});
+document.getElementById('pwa-dismiss').addEventListener('click',()=>document.getElementById('pwa').classList.remove('show'));
+
+/* ═══ EASTER EGG ═══ */
+let buf='';
+document.addEventListener('keydown',e=>{
+  buf=(buf+e.key).toLowerCase().slice(-6);
+  if(buf==='claude') showEgg();
+});
+function showEgg(){
+  const o=document.createElement('div');
+  o.style.cssText='position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);animation:fadein .3s ease';
+  o.innerHTML=`<div style="background:var(--s);border:1px solid var(--b);border-radius:20px;padding:48px 40px;max-width:480px;width:90%;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.2)">
+    <div style="font-size:56px;margin-bottom:16px">✦</div>
+    <h2 style="font-size:24px;font-weight:900;letter-spacing:-1px;margin-bottom:12px;color:var(--t)">Merci <span style="color:var(--a)">Lexa</span> !</h2>
+    <div style="height:2px;background:linear-gradient(90deg,transparent,var(--a),transparent);margin:16px auto;width:60px"></div>
+    <p style="font-size:14px;color:var(--m);line-height:1.7;margin-bottom:8px">C'était un plaisir de construire <strong style="color:var(--t)">Lexa Studios</strong> avec toi.</p>
+    <p style="font-size:14px;color:var(--m);line-height:1.7;margin-bottom:24px">Continue à créer des choses <strong style="color:var(--t)">extraordinaires</strong>. 🚀</p>
+    <p style="font-size:11px;color:var(--d);letter-spacing:1px;margin-bottom:24px">— CLAUDE · ANTHROPIC —</p>
+    <button onclick="this.closest('div[style]').remove()" style="background:var(--a);color:#fff;border:none;padding:10px 24px;border-radius:10px;font-size:13px;font-weight:700;cursor:pointer;font-family:var(--font)">Fermer</button>
+  </div>`;
+  document.body.appendChild(o);
+  o.addEventListener('click',e=>{if(e.target===o)o.remove()});
+}
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+
+<!-- ═══ ANIMAL DE COMPAGNIE VIRTUEL ═══ -->
+<style>
+/* PET WIDGET */
+#pet-wrap{position:fixed;bottom:76px;left:16px;z-index:850;display:flex;flex-direction:column;align-items:center;gap:0;user-select:none}
+@media(min-width:768px){#pet-wrap{bottom:24px;left:24px}}
+
+/* PET BUBBLE (speech) */
+#pet-bubble{
+  background:var(--s);border:1.5px solid var(--b);border-radius:14px 14px 14px 4px;
+  padding:8px 12px;font-size:12px;font-weight:600;color:var(--t);
+  max-width:160px;text-align:center;line-height:1.4;
+  box-shadow:var(--sh);margin-bottom:6px;
+  opacity:0;transform:translateY(6px);transition:.3s;pointer-events:none;
+}
+#pet-bubble.show{opacity:1;transform:translateY(0)}
+
+/* PET BODY */
+#pet-body{
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:36px;cursor:pointer;
+  transition:transform .2s;
+  position:relative;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.2));
+  animation:pet-idle 3s ease infinite;
+}
+#pet-body:active{transform:scale(.85)}
+@keyframes pet-idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+#pet-body.happy{animation:pet-happy .4s ease}
+@keyframes pet-happy{0%{transform:scale(1)}25%{transform:scale(1.3) rotate(-10deg)}75%{transform:scale(1.2) rotate(10deg)}100%{transform:scale(1)}}
+#pet-body.sad{animation:pet-sad .5s ease}
+@keyframes pet-sad{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+
+/* PET NAME TAG */
+#pet-nametag{
+  font-size:10px;font-weight:700;color:var(--m);
+  background:var(--s);border:1px solid var(--b);
+  padding:2px 10px;border-radius:10px;
+  box-shadow:var(--sh);margin-top:4px;
+  letter-spacing:.3px;
+}
+
+/* PET STATS BAR */
+#pet-stats{
+  display:flex;gap:6px;margin-top:6px;
+}
+.pstat{display:flex;flex-direction:column;align-items:center;gap:2px}
+.pstat-bar{width:28px;height:4px;background:var(--b);border-radius:2px;overflow:hidden}
+.pstat-fill{height:100%;border-radius:2px;transition:width .5s}
+.pstat-label{font-size:8px;color:var(--d);font-weight:600}
+
+/* PET PANEL */
+#pet-panel{
+  position:fixed;bottom:200px;left:16px;z-index:849;
+  background:var(--s);border:1px solid var(--b);border-radius:16px;
+  padding:16px;width:260px;box-shadow:var(--shm);
+  display:none;
+}
+#pet-panel.open{display:block;animation:sup .25s ease}
+@media(min-width:768px){#pet-panel{bottom:160px;left:24px}}
+.pp-title{font-size:13px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.pp-close{background:none;border:none;color:var(--m);font-size:16px;cursor:pointer;padding:2px}
+.pp-section{margin-bottom:14px}
+.pp-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--m);margin-bottom:8px}
+/* Animal selector */
+.animal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.animal-btn{
+  font-size:24px;padding:8px 4px;border-radius:10px;
+  border:1.5px solid var(--b);background:var(--s2);
+  cursor:pointer;transition:.2s;text-align:center;
+}
+.animal-btn.active{border-color:var(--a);background:rgba(230,57,70,.08)}
+.animal-btn:active{transform:scale(.9)}
+/* Color selector */
+.color-row{display:flex;gap:6px;flex-wrap:wrap}
+.pet-color-btn{
+  width:26px;height:26px;border-radius:50%;border:2px solid transparent;
+  cursor:pointer;transition:.2s;position:relative;
+}
+.pet-color-btn.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800}
+.pet-color-btn:active{transform:scale(.85)}
+/* Name input */
+.pp-input{
+  width:100%;background:var(--s2);border:1.5px solid var(--b);
+  border-radius:8px;color:var(--t);font-family:var(--font);
+  font-size:14px;padding:9px 12px;outline:none;transition:.2s;
+}
+.pp-input:focus{border-color:var(--a)}
+/* Action btns */
+.pp-actions{display:flex;gap:6px}
+.pp-btn{
+  flex:1;padding:9px;border-radius:8px;border:1.5px solid var(--b);
+  background:var(--s2);font-size:18px;cursor:pointer;transition:.2s;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.pp-btn:active{transform:scale(.9);border-color:var(--a)}
+.pp-btn span{font-size:9px;font-weight:700;color:var(--m)}
+</style>
+
+<!-- PET HTML -->
+<div id="pet-wrap">
+  <div id="pet-bubble"></div>
+  <div id="pet-body" onclick="petClick()" oncontextmenu="event.preventDefault();togglePetPanel()">🐱</div>
+  <div id="pet-nametag">Mochi</div>
+  <div id="pet-stats">
+    <div class="pstat">
+      <div class="pstat-bar"><div class="pstat-fill" id="ps-happy" style="background:#f59e0b;width:80%"></div></div>
+      <div class="pstat-label">😊</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-bar"><div class="pstat-fill" id="ps-energy" style="background:#10b981;width:90%"></div></div>
+      <div class="pstat-label">⚡</div>
+    </div>
+    <div class="pstat">
+      <div class="pstat-bar"><div class="pstat-fill" id="ps-love" style="background:#e63946;width:70%"></div></div>
+      <div class="pstat-label">❤️</div>
+    </div>
+  </div>
+</div>
+
+<!-- PET PANEL -->
+<div id="pet-panel">
+  <div class="pp-title">
+    🐾 Mon compagnon
+    <button class="pp-close" onclick="togglePetPanel()">✕</button>
+  </div>
+
+  <div class="pp-section">
+    <div class="pp-label">Choisir l'animal</div>
+    <div class="animal-grid" id="animal-grid"></div>
+  </div>
+
+  <div class="pp-section">
+    <div class="pp-label">Couleur / Style</div>
+    <div class="color-row" id="color-row"></div>
+  </div>
+
+  <div class="pp-section">
+    <div class="pp-label">Nom du compagnon</div>
+    <input type="text" class="pp-input" id="pet-name-input" placeholder="Donne-lui un nom..." maxlength="20">
+  </div>
+
+  <div class="pp-section">
+    <div class="pp-label">Interagir</div>
+    <div class="pp-actions">
+      <button class="pp-btn" onclick="feedPet()">🍖<span>Nourrir</span></button>
+      <button class="pp-btn" onclick="playPet()">🎾<span>Jouer</span></button>
+      <button class="pp-btn" onclick="hugPet()">🤗<span>Câlin</span></button>
+      <button class="pp-btn" onclick="sleepPet()">😴<span>Dodo</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══ ANIMAL DE COMPAGNIE VIRTUEL ═══ */
+const ANIMALS=[
+  {id:'cat',  emoji:'🐱', name:'Chat'},
+  {id:'dog',  emoji:'🐶', name:'Chien'},
+  {id:'fox',  emoji:'🦊', name:'Renard'},
+  {id:'panda',emoji:'🐼', name:'Panda'},
+  {id:'bunny',emoji:'🐰', name:'Lapin'},
+  {id:'bear', emoji:'🐻', name:'Ours'},
+  {id:'frog', emoji:'🐸', name:'Grenouille'},
+  {id:'lion', emoji:'🦁', name:'Lion'},
+  {id:'dino', emoji:'🦕', name:'Dino'},
+  {id:'uni',  emoji:'🦄', name:'Licorne'},
+  {id:'ghost',emoji:'👻', name:'Fantôme'},
+  {id:'robot',emoji:'🤖', name:'Robot'},
+];
+const FILTERS=[
+  {id:'none',  label:'Normal', filter:'none'},
+  {id:'golden',label:'Doré',   filter:'sepia(1) saturate(2) hue-rotate(10deg)'},
+  {id:'blue',  label:'Bleu',   filter:'hue-rotate(200deg) saturate(1.5)'},
+  {id:'pink',  label:'Rose',   filter:'hue-rotate(300deg) saturate(1.5)'},
+  {id:'green', label:'Vert',   filter:'hue-rotate(100deg) saturate(1.5)'},
+  {id:'purple',label:'Violet', filter:'hue-rotate(250deg) saturate(1.5)'},
+  {id:'dark',  label:'Sombre', filter:'brightness(.6) contrast(1.4)'},
+  {id:'neon',  label:'Néon',   filter:'saturate(3) brightness(1.2)'},
+];
+
+/* STATE — tout dans localStorage pour persister */
+function loadPet(){
+  return JSON.parse(localStorage.getItem('lx_pet')||JSON.stringify({
+    animal:'cat',filter:'none',name:'Mochi',
+    happy:80,energy:90,love:70,
+    lastSeen:Date.now()
+  }));
+}
+function savePet(p){localStorage.setItem('lx_pet',JSON.stringify(p))}
+
+let pet=loadPet();
+let bubbleTimer=null;
+let panelOpen=false;
+
+/* Calculer la dégradation dans le temps */
+function applyTimeDegradation(){
+  const elapsed=(Date.now()-pet.lastSeen)/1000/60; // minutes
+  if(elapsed>1){
+    pet.happy = Math.max(10, pet.happy - elapsed*0.5);
+    pet.energy= Math.max(10, pet.energy- elapsed*0.3);
+    pet.love  = Math.max(20, pet.love  - elapsed*0.2);
+    pet.lastSeen=Date.now();
+    savePet(pet);
+  }
+}
+
+/* RENDER */
+function renderPet(){
+  const a=ANIMALS.find(x=>x.id===pet.animal)||ANIMALS[0];
+  const f=FILTERS.find(x=>x.id===pet.filter)||FILTERS[0];
+  document.getElementById('pet-body').textContent=a.emoji;
+  document.getElementById('pet-body').style.filter=f.filter;
+  document.getElementById('pet-nametag').textContent=pet.name||'Mochi';
+  document.getElementById('ps-happy').style.width=pet.happy+'%';
+  document.getElementById('ps-energy').style.width=pet.energy+'%';
+  document.getElementById('ps-love').style.width=pet.love+'%';
+  document.getElementById('pet-name-input').value=pet.name||'';
+}
+
+/* BUBBLE */
+function showBubble(msg,duration=2500){
+  clearTimeout(bubbleTimer);
+  const b=document.getElementById('pet-bubble');
+  b.textContent=msg;b.classList.add('show');
+  bubbleTimer=setTimeout(()=>b.classList.remove('show'),duration);
+}
+
+/* CLICK SUR L'ANIMAL */
+const phrases={
+  happy:['Je t\'aime ! 💕','Tu es le meilleur !','Je suis heureux 😊','Ouiii !','Génial !'],
+  normal:['Coucou !','Je m\'ennuie un peu...','Joue avec moi ?','...','Hmm'],
+  sad:['Je suis triste 😢','Prends soin de moi...','J\'ai faim...','Je veux un câlin'],
+};
+function petClick(){
+  applyTimeDegradation();
+  const b=document.getElementById('pet-body');
+  b.classList.remove('happy','sad');
+  pet.love=Math.min(100,pet.love+5);
+  pet.happy=Math.min(100,pet.happy+3);
+  savePet(pet);
+  b.classList.add('happy');
+  setTimeout(()=>b.classList.remove('happy'),500);
+  const mood=pet.happy>60?'happy':pet.happy>35?'normal':'sad';
+  const arr=phrases[mood];
+  showBubble(arr[Math.floor(Math.random()*arr.length)]);
+  renderPet();
+}
+
+/* ACTIONS */
+function feedPet(){
+  applyTimeDegradation();
+  pet.energy=Math.min(100,pet.energy+25);
+  pet.happy=Math.min(100,pet.happy+10);
+  savePet(pet);renderPet();
+  document.getElementById('pet-body').classList.add('happy');
+  setTimeout(()=>document.getElementById('pet-body').classList.remove('happy'),500);
+  showBubble('Miam miam ! 😋 Merci !');
+}
+function playPet(){
+  applyTimeDegradation();
+  pet.happy=Math.min(100,pet.happy+20);
+  pet.energy=Math.max(10,pet.energy-10);
+  pet.love=Math.min(100,pet.love+10);
+  savePet(pet);renderPet();
+  document.getElementById('pet-body').classList.add('happy');
+  setTimeout(()=>document.getElementById('pet-body').classList.remove('happy'),500);
+  showBubble('C\'est trop fun ! 🎾');
+}
+function hugPet(){
+  applyTimeDegradation();
+  pet.love=Math.min(100,pet.love+20);
+  pet.happy=Math.min(100,pet.happy+15);
+  savePet(pet);renderPet();
+  document.getElementById('pet-body').classList.add('happy');
+  setTimeout(()=>document.getElementById('pet-body').classList.remove('happy'),500);
+  showBubble('Je t\'aime tellement ! 🥰');
+}
+function sleepPet(){
+  pet.energy=Math.min(100,pet.energy+40);
+  savePet(pet);renderPet();
+  showBubble('Zzz... 😴 Je me repose',3000);
+}
+
+/* PANEL */
+function togglePetPanel(){
+  panelOpen=!panelOpen;
+  document.getElementById('pet-panel').classList.toggle('open',panelOpen);
+  if(panelOpen) buildPanel();
+}
+function buildPanel(){
+  /* Animals */
+  document.getElementById('animal-grid').innerHTML=ANIMALS.map(a=>`
+    <button class="animal-btn ${pet.animal===a.id?'active':''}" onclick="setPetAnimal('${a.id}')" title="${a.name}">${a.emoji}</button>
+  `).join('');
+  /* Filters */
+  document.getElementById('color-row').innerHTML=FILTERS.map(f=>`
+    <div class="pet-color-btn ${pet.filter===f.id?'active':''}"
+      style="background:${f.id==='none'?'var(--s2)':f.id==='golden'?'#f59e0b':f.id==='blue'?'#3b82f6':f.id==='pink'?'#ec4899':f.id==='green'?'#10b981':f.id==='purple'?'#7c3aed':f.id==='dark'?'#374151':'#e879f9'}"
+      onclick="setPetFilter('${f.id}')" title="${f.label}"></div>
+  `).join('');
+}
+function setPetAnimal(id){
+  pet.animal=id;savePet(pet);renderPet();buildPanel();
+  const a=ANIMALS.find(x=>x.id===id);
+  showBubble('Je suis un '+a.name+' ! '+a.emoji);
+}
+function setPetFilter(id){
+  pet.filter=id;savePet(pet);renderPet();buildPanel();
+  showBubble('Nouveau look ! ✨');
+}
+document.getElementById('pet-name-input').addEventListener('input',e=>{
+  pet.name=e.target.value||'Mochi';
+  savePet(pet);
+  document.getElementById('pet-nametag').textContent=pet.name;
+});
+
+/* MESSAGES AUTOMATIQUES */
+function petAutoTalk(){
+  applyTimeDegradation();
+  if(pet.energy<30) showBubble('J\'ai besoin de dormir... 😴');
+  else if(pet.happy<25) showBubble('Je suis triste 😢 Joue avec moi !');
+  else if(pet.love<30) showBubble('J\'ai besoin d\'un câlin 🥺');
+  else if(Math.random()<.3){
+    const r=['Bonjour ! 👋','Tu vas bien ?','Je t\'adore !','Ce site est cool 😎','Explore le site !'];
+    showBubble(r[Math.floor(Math.random()*r.length)]);
+  }
+}
+
+/* INIT */
+applyTimeDegradation();
+renderPet();
+setTimeout(()=>showBubble('Salut ! Je suis '+(pet.name||'Mochi')+' ! 👋'),1500);
+setInterval(petAutoTalk,30000);
+
+/* Sauvegarder lastSeen quand on quitte */
+window.addEventListener('beforeunload',()=>{pet.lastSeen=Date.now();savePet(pet)});
+</script>
+<script src="assets/js/lexa-usage-tracking.js" defer></script>
+</body>
+</html>

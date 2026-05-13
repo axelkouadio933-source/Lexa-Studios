@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "admin:setup": "node tools/setup-admin.cjs",
+    "server:check": "node --check server.js"
+  },
+  "dependencies": {}
+}

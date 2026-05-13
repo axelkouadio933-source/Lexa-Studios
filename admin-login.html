@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070b18">
+<title>Lexa Admin - Accès privé</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}body{min-height:100vh;background:#070b18;color:#f8fafc;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;display:grid;place-items:center;padding:20px}body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 50% -10%,rgba(51,189,242,.18),transparent 35%),linear-gradient(#070b18,#050713)}.login{width:min(390px,100%);background:#101827;border:1px solid #20304b;border-radius:18px;padding:28px;box-shadow:0 28px 90px rgba(0,0,0,.45)}.logo{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#33bdf2,#5964f2);display:grid;place-items:center;font-size:25px;font-weight:950;margin:0 auto 18px}.login h1{text-align:center;font-size:25px;margin-bottom:8px}.login p{text-align:center;color:#94a3b8;line-height:1.5;margin-bottom:22px}.field{margin-bottom:14px}.field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#94a3b8;font-weight:900;margin-bottom:7px}.field input{width:100%;height:46px;border-radius:10px;border:1px solid #2b3c58;background:#0b1220;color:#fff;padding:0 13px;font:inherit;outline:none}.field input:focus{border-color:#33bdf2;box-shadow:0 0 0 3px rgba(51,189,242,.13)}button{width:100%;height:46px;border:0;border-radius:10px;background:linear-gradient(135deg,#33bdf2,#2563eb);color:#fff;font-weight:950;cursor:pointer;margin-top:5px}.error{display:none;margin-top:12px;color:#fecaca;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.24);border-radius:10px;padding:10px;font-size:13px}.error.show{display:block}.hint{margin-top:16px!important;font-size:12px!important}.hint code{color:#bae6fd}</style>
+</head>
+<body>
+<main class="login">
+  <div class="logo">L</div>
+  <h1>Lexa Admin</h1>
+  <p>Espace privé administrateur. L'accès complet est servi uniquement après validation serveur.</p>
+  <form id="loginForm">
+    <div class="field"><label>Identifiant</label><input id="username" name="username" autocomplete="username" required></div>
+    <div class="field"><label>Mot de passe</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+    <button type="submit">Entrer dans l'admin</button>
+    <div class="error" id="error"></div>
+  </form>
+  <p class="hint">Lance le site avec <code>npm start</code>, puis ouvre <code>/admin</code>.</p>
+</main>
+<script>
+document.getElementById("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  const error = document.getElementById("error");
+  error.classList.remove("show");
+  const payload = { username: username.value.trim(), password: password.value };
+  const response = await fetch("/api/admin/login", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(payload) });
+  const data = await response.json().catch(() => ({}));
+  if (response.ok && data.ok) location.replace("/admin");
+  else { error.textContent = data.error || "Connexion impossible."; error.classList.add("show"); }
+});
+</script>
+</body>
+</html>

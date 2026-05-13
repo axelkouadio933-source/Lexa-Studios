@@ -1,0 +1,53 @@
+{
+  "name": "Lexa Games & Studios",
+  "short_name": "Lexa Games",
+  "description": "Portfolio, projets, IA, creation digitale et espace gaming de Lexa Studios.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050917",
+  "theme_color": "#050917",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/icons/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": [
+    "portfolio",
+    "design",
+    "technology",
+    "games"
+  ],
+  "shortcuts": [
+    {
+      "name": "Lexa Games",
+      "short_name": "Games",
+      "url": "./pages/jeux.html"
+    },
+    {
+      "name": "Projets",
+      "short_name": "Projets",
+      "url": "./pages/projet.html"
+    },
+    {
+      "name": "Lexa Download",
+      "short_name": "Download",
+      "url": "./pages/download.html"
+    }
+  ]
+}
